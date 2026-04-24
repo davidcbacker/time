@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Now</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="clocks">
+        <div class="clock">
+            <h2>US Pacific</h2>
+            <div class="time" id="us-pacific">--:--:--</div>
+        </div>
+        <div class="clock">
+            <h2>US Eastern</h2>
+            <div class="time" id="us-eastern">--:--:--</div>
+        </div>
+        <div class="clock">
+            <h2>GMT</h2>
+            <div class="time" id="gmt">--:--:--</div>
+        </div>
+        <div class="clock">
+            <h2>EU Eastern</h2>
+            <div class="time" id="eu-eastern">--:--:--</div>
+        </div>
+    </div>
+    <script>
+        tick();
+        setInterval(tick, 1000);
+    </script>
+</body>
+</html>
