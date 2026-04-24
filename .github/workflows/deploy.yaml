@@ -1,0 +1,25 @@
+name: Build and Deploy Website
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  deploy_website:
+    name: Deploy from artifact
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Prepare output files
+        run: |
+          mkdir output/
+          cp src/* output/
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
+          publish_branch: gh-pages

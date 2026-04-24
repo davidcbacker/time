@@ -1,0 +1,44 @@
+name: Check changes to master
+
+on :
+  push:
+    branches: master
+  pull_request:
+    branches: master
+  schedule:
+    - cron: "*/20 * * * *"
+  workflow_dispatch:
+
+jobs:
+  lint_ci:
+    name: Lint CI
+    uses: ./.github/workflows/lint_ci.yaml
+  
+  lint_css:
+    name: Lint CSS
+    uses: ./.github/workflows/lint_css.yaml
+
+  lint_html:
+    name: Lint HTML code
+    uses: ./.github/workflows/lint_html.yaml
+
+  lint_javascript:
+    name: Lint JavaScript code
+    uses: ./.github/workflows/lint_javascript.yaml
+
+  lint_markdown:
+    name: Check Markdown code
+    uses: ./.github/workflows/lint_markdown.yaml
+
+  deploy_website:
+    name: Deploy website
+    needs:
+      - lint_ci
+      - lint_css
+      - lint_html
+      - lint_javascript
+      - lint_markdown
+    if: ${{ github.ref == 'refs/heads/master' }}
+    permissions:
+      contents: write
+    uses: ./.github/workflows/deploy.yaml
