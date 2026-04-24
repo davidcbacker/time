@@ -11,7 +11,12 @@ jobs:
     permissions:
       contents: write
     steps:
-      - Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Prepare output files
+        run: |
+          mkdir output/
+          cp src/* output/
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
