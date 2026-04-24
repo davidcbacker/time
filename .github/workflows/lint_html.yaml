@@ -9,6 +9,15 @@ jobs:
     name: Lint HTML code
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Create package lock
+        run: touch package-lock.json
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
       - name: Install html-validate
         run: |
           npm install -g html-validate
