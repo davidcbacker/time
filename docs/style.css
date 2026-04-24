@@ -3,14 +3,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    padding: 2rem 0;
+    box-sizing: border-box;
     background: #111;
     color: #eee;
 }
 
 div.clocks {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 4rem;
     text-align: center;
 }
