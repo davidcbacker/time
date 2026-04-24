@@ -10,8 +10,12 @@ on :
   workflow_dispatch:
 
 jobs:
+  lint_ci:
+    name: Lint CI
+    uses: ./.github/workflows/lint_ci.yaml
+  
   lint_css:
-    name: Lint CSS code
+    name: Lint CSS
     uses: ./.github/workflows/lint_css.yaml
 
   lint_html:
@@ -29,6 +33,7 @@ jobs:
   deploy_website:
     name: Deploy website
     needs:
+      - lint_ci
       - lint_css
       - lint_html
       - lint_javascript
