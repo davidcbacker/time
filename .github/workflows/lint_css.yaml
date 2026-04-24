@@ -1,4 +1,4 @@
-name: Check CSS
+name: Lint CSS
 
 on:
   workflow_call:
