@@ -1,0 +1,17 @@
+name: Lint CI
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  lint_ci:
+    name: Lint CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull the latest code
+        uses: actions/checkout@v6
+      - name: Lint
+        run: |
+          bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+          ./actionlint -color -verbose
