@@ -1,0 +1,14 @@
+name: Check Markdown files
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  lint_javascript:
+    name: Lint JavaScript
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: |
+          echo "TEST"
