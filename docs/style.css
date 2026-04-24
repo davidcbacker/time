@@ -1,0 +1,30 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #111;
+    color: #eee;
+}
+
+div.clocks {
+    display: flex;
+    gap: 4rem;
+    text-align: center;
+}
+
+div.clock h2 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #aaa;
+    margin-bottom: 0.5rem;
+}
+
+div.clock div.time {
+    font-size: 3.5rem;
+    font-variant-numeric:
+    tabular-nums;
+}
