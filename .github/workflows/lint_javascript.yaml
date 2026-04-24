@@ -9,6 +9,11 @@ jobs:
     name: Lint JavaScript
     runs-on: ubuntu-latest
     steps:
-      - name: Test
-        run: |
-          echo "TEST"
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Create package lock
+        run: touch package-lock.json
+      - name: Install eslint
+        run: npm install -g eslint
+      - name: Lint JavaScript
+        run: eslint .
