@@ -1,3 +1,17 @@
+name: Build and Deploy Website
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  deploy_website:
+    name: Deploy from artifact
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - Checkout code
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
