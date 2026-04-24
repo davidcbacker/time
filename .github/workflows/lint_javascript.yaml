@@ -1,4 +1,4 @@
-name: Check Markdown files
+name: Lint JavaScript
 
 on:
   workflow_call:
