@@ -1,0 +1,15 @@
+ci:
+  - '.github/workflows/*.yaml'
+  - '.github/workflows/*.yml'
+  - 'data/config/**'
+css:
+  - 'src/style.css'
+html:
+  - 'src/index.html'
+javascript:
+  - 'src/script.js'
+markdown:
+  - '*.md'
+  - 'data/config/.markdownlint-cli2.jsonc'
+  - 'data/config/spellcheck.yaml'
+  - 'data/config/spellcheck_whitelist.txt'
