@@ -1,0 +1,40 @@
+name: Check changes to master
+
+on :
+  push:
+    branches: master
+  pull_request:
+    branches: master
+  schedule:
+    - cron: "*/20 * * * *"
+  workflow_dispatch:
+
+jobs:
+  lint_css:
+    name: Check CSS code
+    uses: ./.github/workflows/lint_css.yaml
+
+  lint_html:
+    name: Lint HTML code
+    uses: ./.github/workflows/lint_html.yaml
+
+  lint_javascript:
+    name: Lint JavaScript code
+    uses: ./.github/workflows/lint_javascript.yaml
+
+  lint_markdown:
+    name: Check Markdown code
+    uses: ./.github/workflows/lint_markdown.yaml
+
+  deploy_website:
+    name: Deploy website
+    needs:
+      - lint_css
+      - lint_html
+      - lint_javascript
+      - lint_markdown
+    runs-on: ubuntu-latest
+    steps:
+      - name: Copy src to output
+        run: |
+          cp src/* output/
