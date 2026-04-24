@@ -38,5 +38,7 @@ jobs:
       - lint_html
       - lint_javascript
       - lint_markdown
-    if: always()
+    if: ${{ github.ref == 'refs/heads/master' }}
+    permissions:
+      contents: write
     uses: ./.github/workflows/deploy.yaml
