@@ -35,6 +35,8 @@ jobs:
       - lint_markdown
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
       - name: Copy src to output
         run: |
           cp src/* output/
