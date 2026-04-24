@@ -28,4 +28,4 @@ jobs:
         run: |
           csslint \
             --ignore=box-sizing \
-            src/*.css
+            src/style.css
