@@ -11,9 +11,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
-      - name: Create package lock
-        run: touch package-lock.json
-      - name: Install eslint
-        run: npm install -g eslint
-      - name: Lint JavaScript
-        run: eslint .
+      - name: Run ESLint with SuperLinter
+        uses: super-linter/super-linter@v8
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_JAVASCRIPT_ES: true
