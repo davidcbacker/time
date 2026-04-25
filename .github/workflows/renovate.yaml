@@ -1,4 +1,4 @@
-name: Dependencies check
+name: Renovate
 
 on:
   schedule:
@@ -9,8 +9,8 @@ env:
   RENOVATE_CONFIG_PATH: 'config/renovate.json'
 
 jobs:
-  renovate-dependencies:
-    name: Renovate dependencies
+  renovate:
+    name: Renovate
     runs-on: ubuntu-latest
     permissions:
       contents: read
