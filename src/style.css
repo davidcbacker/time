@@ -32,3 +32,7 @@ div.clock div.time {
     font-variant-numeric:
     tabular-nums;
 }
+
+footer {
+    display: block;
+}
