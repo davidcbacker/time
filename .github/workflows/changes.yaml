@@ -21,6 +21,7 @@ jobs:
       html: ${{ steps.filter.outputs.html }}
       javascript: ${{ steps.filter.outputs.javascript }}
       markdown: ${{ steps.filter.outputs.markdown }}
+      website: ${{ steps.filter.outputs.website }}
     steps:
       - uses: actions/checkout@v6
       - uses: dorny/paths-filter@v4
@@ -32,31 +33,51 @@ jobs:
   lint_ci:
     name: Lint CI
     needs: changes
-    if: ${{ needs.changes.outputs.ci == 'true' }}
+    if: >-
+      ${{
+        needs.changes.outputs.ci == 'true' ||
+        needs.changes.outputs.website
+      }}
     uses: ./.github/workflows/lint_ci.yaml
   
   lint_css:
     name: Lint CSS
     needs: changes
-    if: ${{ needs.changes.outputs.css == 'true' }}
+    if: >-
+      ${{
+        needs.changes.outputs.css == 'true' ||
+        needs.changes.outputs.website
+      }}
     uses: ./.github/workflows/lint_css.yaml
 
   lint_html:
     name: Lint HTML code
     needs: changes
-    if: ${{ needs.changes.outputs.html == 'true' }}
+    if: >-
+      ${{
+        needs.changes.outputs.html == 'true' ||
+        needs.changes.outputs.website
+      }}
     uses: ./.github/workflows/lint_html.yaml
 
   lint_javascript:
     name: Lint JavaScript code
     needs: changes
-    if: ${{ needs.changes.outputs.javascript == 'true' }}
+    if: >-
+      ${{
+        needs.changes.outputs.javascript == 'true' ||
+        needs.changes.outputs.website
+      }}
     uses: ./.github/workflows/lint_javascript.yaml
 
   check_markdown:
     name: Check Markdown code
     needs: changes
-    if: ${{ needs.changes.outputs.markdown == 'true' }}
+    if: >-
+      ${{
+        needs.changes.outputs.markdown == 'true' ||
+        needs.changes.outputs.website
+      }}
     uses: ./.github/workflows/check_markdown.yaml
 
   build_website:
@@ -68,6 +89,10 @@ jobs:
       - lint_html
       # - lint_javascript # FOR NOW UNTIL DORNY PATHS FILTER IS IMPLEMENTED
       - check_markdown
+    if: >-
+      ${{
+        needs.changes.outputs.website
+      }}
     uses: ./.github/workflows/build.yaml
 
   deploy_website:
@@ -80,7 +105,11 @@ jobs:
       - lint_javascript
       - check_markdown
       - build_website
-    if: ${{ github.ref == 'refs/heads/master' }}
+    if: >-
+      ${{
+        needs.changes.outputs.website &&
+        github.ref == 'refs/heads/master'
+      }}
     permissions:
       contents: write
     uses: ./.github/workflows/deploy.yaml
