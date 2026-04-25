@@ -26,9 +26,9 @@ jobs:
     name: Lint JavaScript code
     uses: ./.github/workflows/lint_javascript.yaml
 
-  lint_markdown:
+  check_markdown:
     name: Check Markdown code
-    uses: ./.github/workflows/lint_markdown.yaml
+    uses: ./.github/workflows/check_markdown.yaml
 
   build_website:
     name: Build website
@@ -37,7 +37,7 @@ jobs:
       - lint_css
       - lint_html
       # - lint_javascript # FOR NOW UNTIL DORNY PATHS FILTER IS IMPLEMENTED
-      - lint_markdown
+      - check_markdown
     uses: ./.github/workflows/build.yaml
 
   deploy_website:
@@ -47,7 +47,7 @@ jobs:
       - lint_css
       - lint_html
       - lint_javascript
-      - lint_markdown
+      - check_markdown
       - build_website
     if: ${{ github.ref == 'refs/heads/master' }}
     permissions:
