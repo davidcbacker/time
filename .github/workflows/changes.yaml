@@ -36,7 +36,7 @@ jobs:
       - lint_ci
       - lint_css
       - lint_html
-      - lint_javascript
+      # - lint_javascript # FOR NOW UNTIL DORNY PATHS FILTER IS IMPLEMENTED
       - lint_markdown
     uses: ./.github/workflows/build.yaml
 
