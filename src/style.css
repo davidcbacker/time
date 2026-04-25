@@ -9,11 +9,7 @@ body {
     margin: 0;
     min-height: 100vh;
     padding: 2rem 0;
-/*
-Source - https://stackoverflow.com/a/70699946
-Posted by Alexander Nied
-Retrieved 2026-04-25, License - CC BY-SA 4.0
-*/
+}
 
 a:link {
     color: lightskyblue;
@@ -33,7 +29,7 @@ a:active {
     font-weight:normal;
 }
 
-div.clocks {
+.clocks {
     display: flex;
     flex-wrap: wrap;
     gap: 4rem;
@@ -41,7 +37,7 @@ div.clocks {
     text-align: center;
 }
 
-div.clock h2 {
+.clock h2 {
     color: #aaa;
     font-size: 1.2rem;
     text-transform: uppercase;
@@ -49,7 +45,7 @@ div.clock h2 {
     margin-bottom: 0.5rem;
 }
 
-div.clock div.time {
+.clock .time {
     font-size: 3.5rem;
     font-variant-numeric:
     tabular-nums;
