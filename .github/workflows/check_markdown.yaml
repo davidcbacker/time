@@ -36,7 +36,7 @@ jobs:
       - name: Create package lock
         run: touch package-lock.json
       - name: Set up Node.js
-        uses: actions/setup-node@64
+        uses: actions/setup-node@6
         with:
           cache: 'npm'
       - name: Install cspell
