@@ -1,0 +1,22 @@
+name: Build Website
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  build_website:
+    name: Build artifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Prepare output files
+        run: |
+          [ -d output/ ] || mkdir output/
+          cp src/* output/
+      - name: Save output artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: build-output
+          path: output/
