@@ -30,6 +30,16 @@ jobs:
     name: Check Markdown code
     uses: ./.github/workflows/lint_markdown.yaml
 
+  build_website:
+    name: Build website
+    needs:
+      - lint_ci
+      - lint_css
+      - lint_html
+      - lint_javascript
+      - lint_markdown
+    uses: ./.github/workflows/build.yaml
+
   deploy_website:
     name: Deploy website
     needs:
