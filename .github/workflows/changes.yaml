@@ -48,6 +48,7 @@ jobs:
       - lint_html
       - lint_javascript
       - lint_markdown
+      - build_website
     if: ${{ github.ref == 'refs/heads/master' }}
     permissions:
       contents: write
