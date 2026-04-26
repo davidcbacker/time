@@ -10,46 +10,106 @@ on :
   workflow_dispatch:
 
 jobs:
+  changes:
+    name: Check which files changed
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      ci: ${{ steps.filter.outputs.ci }}
+      css: ${{ steps.filter.outputs.css }}
+      html: ${{ steps.filter.outputs.html }}
+      javascript: ${{ steps.filter.outputs.javascript }}
+      markdown: ${{ steps.filter.outputs.markdown }}
+      website: ${{ steps.filter.outputs.website }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dorny/paths-filter@v4
+        id: filter
+        with:
+          filters: config/dorny-paths-filter.yaml
+          list-files: shell
+
   lint_ci:
     name: Lint CI
+    needs: changes
+    if: >-
+      ${{
+        needs.changes.outputs.ci == 'true' ||
+        needs.changes.outputs.website
+      }}
     uses: ./.github/workflows/lint_ci.yaml
   
   lint_css:
     name: Lint CSS
+    needs: changes
+    if: >-
+      ${{
+        needs.changes.outputs.css == 'true' ||
+        needs.changes.outputs.website
+      }}
     uses: ./.github/workflows/lint_css.yaml
 
   lint_html:
     name: Lint HTML code
+    needs: changes
+    if: >-
+      ${{
+        needs.changes.outputs.html == 'true' ||
+        needs.changes.outputs.website
+      }}
     uses: ./.github/workflows/lint_html.yaml
 
   lint_javascript:
     name: Lint JavaScript code
+    needs: changes
+    if: >-
+      ${{
+        needs.changes.outputs.javascript == 'true' ||
+        needs.changes.outputs.website
+      }}
     uses: ./.github/workflows/lint_javascript.yaml
 
   check_markdown:
     name: Check Markdown code
+    needs: changes
+    if: >-
+      ${{
+        needs.changes.outputs.markdown == 'true' ||
+        needs.changes.outputs.website
+      }}
     uses: ./.github/workflows/check_markdown.yaml
 
   build_website:
     name: Build website
     needs:
+      - changes
       - lint_ci
       - lint_css
       - lint_html
       # - lint_javascript # FOR NOW UNTIL DORNY PATHS FILTER IS IMPLEMENTED
       - check_markdown
+    if: >-
+      ${{
+        needs.changes.outputs.website
+      }}
     uses: ./.github/workflows/build.yaml
 
   deploy_website:
     name: Deploy website
     needs:
+      - changes
       - lint_ci
       - lint_css
       - lint_html
       - lint_javascript
       - check_markdown
       - build_website
-    if: ${{ github.ref == 'refs/heads/master' }}
+    if: >-
+      ${{
+        needs.changes.outputs.website &&
+        github.ref == 'refs/heads/master'
+      }}
     permissions:
       contents: write
     uses: ./.github/workflows/deploy.yaml
