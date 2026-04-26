@@ -12,6 +12,24 @@ body {
     padding: 2rem 0;
 }
 
+a:link {
+    color: lightskyblue;
+}
+
+a:visited {
+    color: #6d4b8d;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+a:active {
+    color: #ff4040;
+    font-weight:normal;
+    text-decoration:none;
+}
+
 div.clocks {
     display: flex;
     flex-wrap: wrap;
@@ -23,9 +41,9 @@ div.clocks {
 div.clock h2 {
     color: #aaa;
     font-size: 1.2rem;
-    text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: 0.5rem;
+    text-transform: uppercase;
 }
 
 div.clock div.time {
