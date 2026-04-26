@@ -25,5 +25,5 @@ jobs:
       - name: Run Stylelint
         run: |
           stylelint \
-            "src/style.css" \
+            src/style.css \
             --config config/stylelint.json
