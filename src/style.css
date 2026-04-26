@@ -12,7 +12,7 @@ body {
     padding: 2rem 0;
 }
 
-div.clocks {
+.clocks {
     display: flex;
     flex-wrap: wrap;
     gap: 4rem;
@@ -20,15 +20,15 @@ div.clocks {
     text-align: center;
 }
 
-div.clock h2 {
+h2 {
     color: #aaa;
     font-size: 1.2rem;
-    text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: 0.5rem;
+    text-transform: uppercase;
 }
 
-div.clock div.time {
+.clock .time {
     font-size: 3.5rem;
     font-variant-numeric:
     tabular-nums;
