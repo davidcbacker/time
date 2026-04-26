@@ -23,8 +23,7 @@ jobs:
       - name: Run csslint
         run: |
           csslint \
-            --ignore=box-sizing \
-            --ignore=known-properties \
+            --ignore=box-sizing,known-properties \
             src/style.css
       - name: Run Stylelint
         run: |
