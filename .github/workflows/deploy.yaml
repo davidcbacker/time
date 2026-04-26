@@ -11,12 +11,11 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
-      - name: Prepare output files
-        run: |
-          mkdir output/
-          cp src/* output/
+      - name: Download output artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: build-output
+          path: output
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
