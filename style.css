@@ -30,7 +30,7 @@ a:active {
     text-decoration:none;
 }
 
-div.clocks {
+.clocks {
     display: flex;
     flex-wrap: wrap;
     gap: 4rem;
@@ -38,7 +38,7 @@ div.clocks {
     text-align: center;
 }
 
-div.clock h2 {
+h2 {
     color: #aaa;
     font-size: 1.2rem;
     letter-spacing: 0.1em;
@@ -46,7 +46,7 @@ div.clock h2 {
     text-transform: uppercase;
 }
 
-div.clock div.time {
+.clock .time {
     font-size: 3.5rem;
     font-variant-numeric:
     tabular-nums;
