@@ -16,17 +16,18 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '24'
           cache: 'npm'
-      - name: Install csslint
+      - name: Install CSS linters
         run: |
-          npm install -g csslint
-      - name: List rules
-        run: |
-          csslint --list-rules
+          npm install -g csslint stylelint stylelint-config-standard
       - name: Run csslint
         run: |
           csslint \
             --ignore=box-sizing \
             --ignore=known-properties \
             src/style.css
+      - name: Run Stylelint
+        run: |
+          stylelint \
+            src/style.css \
+            --config config/stylelint.json
