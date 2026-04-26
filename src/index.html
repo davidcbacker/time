@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script>
-        tick();
-        setInterval(tick, 1000);
-    </script>
     <div class="clocks">
         <div class="clock">
             <h2>US Pacific</h2>
@@ -30,6 +26,10 @@
             <div class="time" id="eu-eastern">--:--:--</div>
         </div>
     </div>
+    <script>
+        tick();
+        setInterval(tick, 1000);
+    </script>
     <footer>
         <p>Author: David C. Backer</p>
         <p><a href="https://github.com/davidcbacker/time">Source code</a></p>
