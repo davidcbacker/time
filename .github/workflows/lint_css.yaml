@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
+      - name: Create package lock
+        run: touch package-lock.json
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
