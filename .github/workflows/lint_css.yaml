@@ -20,8 +20,6 @@ jobs:
       - name: Install CSS linters
         run: |
           npm install -g csslint stylelint stylelint-config-standard
-      - name: Run Stylelint help command
-        run: stylelint --help
       - name: Run csslint
         run: |
           csslint \
