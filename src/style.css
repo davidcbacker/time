@@ -38,12 +38,12 @@ a:active {
     text-align: center;
 }
 
-.clock h2 {
+h2 {
     color: #aaa;
     font-size: 1.2rem;
-    text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: 0.5rem;
+    text-transform: uppercase;
 }
 
 .clock div.time {
