@@ -12,6 +12,24 @@ body {
     padding: 2rem 0;
 }
 
+a:link {
+    color: lightskyblue;
+}
+
+a:visited {
+    color: #6d4b8d;
+}
+
+a:hover {
+    color: white;
+}
+
+a:active {
+    color: #ff4040;
+    font-weight:normal;
+    text-decoration:none;
+}
+
 .clocks {
     display: flex;
     flex-wrap: wrap;
