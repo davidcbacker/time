@@ -26,11 +26,11 @@ a:hover {
 
 a:active {
     color: #ff4040;
-    text-decoration:none;
     font-weight:normal;
+    text-decoration:none;
 }
 
-div.clocks {
+.clocks {
     display: flex;
     flex-wrap: wrap;
     gap: 4rem;
@@ -38,7 +38,7 @@ div.clocks {
     text-align: center;
 }
 
-div.clock h2 {
+.clock h2 {
     color: #aaa;
     font-size: 1.2rem;
     text-transform: uppercase;
@@ -46,7 +46,7 @@ div.clock h2 {
     margin-bottom: 0.5rem;
 }
 
-div.clock div.time {
+.clock .time {
     font-size: 3.5rem;
     font-variant-numeric:
     tabular-nums;
