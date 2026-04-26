@@ -26,6 +26,4 @@ jobs:
           csslint --list-rules
       - name: Run csslint
         run: |
-          csslint \
-            --ignore=box-sizing \
-            src/style.css
+          csslint src/style.css
