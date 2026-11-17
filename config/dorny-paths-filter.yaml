@@ -13,3 +13,7 @@ markdown:
   - 'data/config/.markdownlint-cli2.jsonc'
   - 'data/config/spellcheck.yaml'
   - 'data/config/spellcheck_whitelist.txt'
+website:
+  - 'src/style.css'
+  - 'src/index.html'
+  - 'src/script.js'
